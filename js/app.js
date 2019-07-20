@@ -1,47 +1,34 @@
-var botao = [];
-for( var cont = 1;cont<10;cont++ ){
+const botao = [];
+for( let cont = 1;cont<10;cont++ ){
       
     botao.push( document.getElementById( String( cont ) ) )
 }
 
+function clicou(n) {
+    if (n != "X" && n != 'O' && !verificar_vitorias("X") && !verificar_vitorias("O")){
 
-	function clicou(n) {
-	if (n != "X" && n != 'O' && !verificar_vitorias("X") && !verificar_vitorias("O")){
-			 var index  = n-1;
+		const index  = n-1;
+		console.log(n)
+		//body.style.background-color = 'red'
+		botao[ index ].value = 'X'
+		verificar_vitorias("X") ?  window.alert('vc venceu!') : timer();	
 
-			console.log(n)
-			//body.style.background-color = 'red'
-			botao[ index ].value = 'X'
-
-		    verificar_vitorias("X") ?  window.alert('vc venceu!') : timer();
-			
-            
-		     
 	}else{
 
       window.alert('Já selecionado!')
 
 	}
 
-	}
-
+}
 //
-
-
-	function numeroAleatorio(){
-		return Math.floor(Math.random()*9)
-	}
-
-//
-
 	function timer(){
 
-		var aleatorio = numeroAleatorio()
-		var index  = aleatorio;
+		const aleatorio = Math.floor(Math.random()*9)
+		const index  = aleatorio;
 
 		console.log(aleatorio)
         
-        var fim = botao.some( function(item){
+        const fim = botao.some( function(item){
               
               return  item.value != "X" &&  item.value != "O";
 
